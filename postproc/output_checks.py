@@ -1,14 +1,8 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
+from .utils import cells_volume
 
-def cells_volume(x, y, zw_3d):
-    # Compute cell sizes in all directions
-    dx = x[1] - x[0]
-    dy = y[1] - y[0]
-    dz = zw_3d[1:] - zw_3d[:-1]
-
-    return dx*dy*dz
 
 def atmo_surf_mass_balance(time, x, y, zw_3d, mconc, surf_mass):
     # Initialze arrays
@@ -39,7 +33,7 @@ def atmo_surf_mass_balance(time, x, y, zw_3d, mconc, surf_mass):
     ax.plot(time, tot_mass, color='k', label='Total')
 
     ax.set_xlim([time[0], time[-1]])
-    ax.set_ylim([0.0, 1.1*atmo_mass.max()])
+    ax.set_ylim([0.0, 1.1*tot_mass.max()])
 
     ax.grid(True)
 
