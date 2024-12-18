@@ -1,6 +1,8 @@
-from postproc.output_checks import atmo_surf_mass_balance, number_mass_consistency
+import sys
 
 from netCDF4 import Dataset
+
+from postproc.output_checks import atmo_surf_mass_balance, number_mass_consistency
 
 
 def main():
@@ -8,8 +10,8 @@ def main():
     diameter = 2e-5
     density = 2500
     # Output files
-    fxy_path = './data/rnr_flat_test_depo_xy.006.nc'
-    f3d_path = './data/rnr_flat_test_depo_3d.006.nc'
+    fxy_path = f'./data/{sys.argv[1]}_xy.0{sys.argv[2]}.nc'
+    f3d_path = f'./data/{sys.argv[1]}_3d.0{sys.argv[2]}.nc'
 
     # Load netCDF files
     fxy = Dataset(fxy_path, 'r+')
